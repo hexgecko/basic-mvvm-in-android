@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.mvvm.basic.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Get the reference to the ViewModel.
-        val viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         // Example of binding static data.
         bindStaticData(R.id.staticData, viewModel.staticData)
@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    @Suppress("SameParameterValue")
     private fun bindStaticData(viewId: Int, staticData: String) {
         findViewById<TextView>(viewId).text = staticData
     }
@@ -81,6 +82,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    @Suppress("SameParameterValue")
     private fun bindColorView(viewId: Int, colorAsHex: LiveData<Long>) {
         val view = findViewById<View>(viewId)
 
